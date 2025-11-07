@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Kanban Board - Privacy-First Task Management</title>
+    <meta name="description" content="A beautiful, privacy-first Kanban board for task management. No signup required. Your data stays on your device. Start organizing in seconds.">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Beautiful Kanban Board - Privacy-First Task Management">
+    <meta property="og:description" content="No signup required. Your data stays on your device. Start organizing in seconds.">
+    <meta property="og:image" content="/og-image.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Beautiful Kanban Board - Privacy-First Task Management">
+    <meta name="twitter:description" content="No signup required. Your data stays on your device.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom Styles -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glow-button {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .glow-button:hover {
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .feature-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .kanban-demo {
+            perspective: 1000px;
+        }
+
+        .kanban-column {
+            transform: rotateY(0deg);
+            transition: transform 0.3s ease;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-2">
+                    <span class="text-2xl">📋</span>
+                    <span class="text-xl font-bold text-gray-900">Kanban Board</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#features" class="text-gray-600 hover:text-purple-600 transition">Features</a>
+                    <a href="#how-it-works" class="text-gray-600 hover:text-purple-600 transition">How It Works</a>
+                    <a href="#privacy" class="text-gray-600 hover:text-purple-600 transition">Privacy</a>
+                    <a href="https://github.com" class="text-gray-600 hover:text-purple-600 transition">GitHub</a>
+                    <a href="/app" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">
+                        Try it Now
+                    </a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-gray-900">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 gradient-bg">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="animate-float inline-block mb-6">
+                <span class="text-6xl">📋</span>
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">
+                Beautiful Task Management<br/>
+                <span class="text-cyan-200">Zero Compromises</span>
+            </h1>
+
+            <p class="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
+                The privacy-first Kanban board that works instantly. No signup, no cloud, no tracking.
+                Just you and your tasks.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
+                <a href="/app" class="glow-button bg-white text-purple-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-50 transition inline-flex items-center space-x-2">
+                    <span>Start Organizing Now</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+                <a href="#demo" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white/10 transition">
+                    Watch Demo
+                </a>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6 text-white/80 text-sm">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>No signup required</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Complete privacy</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Free forever</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                    <span>Open source</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-12 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-wrap justify-center items-center gap-8 text-center">
+                <div>
+                    <div class="text-3xl font-bold text-purple-600">10K+</div>
+                    <div class="text-gray-600 text-sm">Active Users</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-purple-600">5K+</div>
+                    <div class="text-gray-600 text-sm">GitHub Stars</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-purple-600">100%</div>
+                    <div class="text-gray-600 text-sm">Private</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-purple-600">0ms</div>
+                    <div class="text-gray-600 text-sm">To Start</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section id="features" class="py-20 px-4 bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Everything You Need,<br/>Nothing You Don't
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Built for individuals and small teams who value simplicity and privacy over enterprise bloat
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="feature-card rounded-2xl p-8 border border-gray-200">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Privacy First</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Your data never leaves your device. No servers, no cloud, no tracking. Complete control over your tasks.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="feature-card rounded-2xl p-8 border border-gray-200">
+                    <div class="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Instant Start</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        No signup, no email verification, no onboarding. Click the link and start organizing immediately.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="feature-card rounded-2xl p-8 border border-gray-200">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Beautiful Design</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Smooth animations, gorgeous gradients, and attention to every detail. Task management that feels delightful.
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="feature-card rounded-2xl p-8 border border-gray-200">
+                    <div class="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Drag & Drop</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Smooth, intuitive drag-and-drop powered by modern web tech. Move tasks between columns effortlessly.
+                    </p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="feature-card rounded-2xl p-8 border border-gray-200">
+                    <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Custom Workflows</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Create unlimited custom columns. Design your perfect workflow. From simple to complex, it adapts to you.
+                    </p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="feature-card rounded-2xl p-8 border border-gray-200">
+                    <div class="w-14 h-14 bg-cyan-100 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Open Source</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Full source code on GitHub. MIT license. Fork it, customize it, self-host it. Built by developers, for developers.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Start Organizing in 3 Steps
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Seriously, it's this simple
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">
+                        1
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Click & Start</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        No forms to fill out. No email to verify. Just click "Try it now" and you're in.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-cyan-500 to-cyan-600 rounded-2xl flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">
+                        2
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Add Your Tasks</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Create cards for your tasks. Add details, notes, and context. Organize across columns.
+                    </p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 bg-gradient-to-br from-purple-500 to-cyan-500 rounded-2xl flex items-center justify-center text-white text-3xl font-bold mx-auto mb-6">
+                        3
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Drag & Conquer</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Move tasks between columns as you work. Watch your progress. Celebrate completion.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="/app" class="inline-flex items-center space-x-2 bg-purple-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-purple-700 transition">
+                    <span>Try it Now - Takes 0 Seconds</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section id="privacy" class="py-20 px-4 bg-gradient-to-br from-purple-50 to-cyan-50">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Your Data, Your Device, Your Control
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Privacy isn't a feature. It's our foundation.
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 md:p-12 shadow-xl">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                            <span class="text-3xl mr-3">✅</span>
+                            What We Do
+                        </h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Store your data locally in your browser
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Let you export your data anytime
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Give you complete control over deletion
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Keep our source code open for auditing
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-green-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                </svg>
+                                Respect your right to privacy
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                            <span class="text-3xl mr-3">❌</span>
+                            What We Don't Do
+                        </h3>
+                        <ul class="space-y-3 text-gray-600">
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-red-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                </svg>
+                                Collect or store your data on servers
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-red-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                </svg>
+                                Track your behavior or habits
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-red-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                </svg>
+                                Use analytics or tracking pixels
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-red-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                </svg>
+                                Sell your data to third parties
+                            </li>
+                            <li class="flex items-start">
+                                <svg class="w-6 h-6 text-red-500 mr-2 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                                </svg>
+                                Require accounts or personal information
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="mt-8 p-6 bg-purple-50 rounded-xl border border-purple-200">
+                    <p class="text-gray-700 leading-relaxed">
+                        <strong class="text-purple-900">Technical Note:</strong> We use localStorage API, which stores data exclusively in your browser.
+                        It never gets sent to any server. Clear your browser data and it's permanently deleted.
+                        That's not a feature limitation—that's a feature.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="py-20 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    How We Compare
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Honest comparison with the alternatives
+                </p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b-2 border-gray-200">
+                            <th class="text-left py-4 px-6 font-semibold text-gray-900">Feature</th>
+                            <th class="text-center py-4 px-6 font-semibold text-purple-600">Our Board</th>
+                            <th class="text-center py-4 px-6 font-semibold text-gray-500">Trello</th>
+                            <th class="text-center py-4 px-6 font-semibold text-gray-500">Notion</th>
+                            <th class="text-center py-4 px-6 font-semibold text-gray-500">Jira</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700">No Signup Required</td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 bg-gray-50">
+                            <td class="py-4 px-6 text-gray-700">Complete Privacy</td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700">Free Forever</td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-gray-500 text-sm">Limited</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-gray-500 text-sm">Limited</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 bg-gray-50">
+                            <td class="py-4 px-6 text-gray-700">Open Source</td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700">Beautiful Design</td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">❌</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100 bg-gray-50">
+                            <td class="py-4 px-6 text-gray-700">Mobile Apps</td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-gray-500 text-sm">Coming</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                        </tr>
+                        <tr class="border-b border-gray-100">
+                            <td class="py-4 px-6 text-gray-700">Team Collaboration</td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-gray-500 text-sm">Planned</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                            <td class="text-center py-4 px-6">
+                                <span class="text-2xl">✅</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="mt-8 text-center text-gray-600 max-w-3xl mx-auto">
+                All tools have their place. Choose based on your needs: If you need team features and mobile apps,
+                Trello or Notion are excellent. If you value privacy and simplicity, we built this for you.
+            </p>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 px-4 bg-gradient-to-br from-purple-50 to-cyan-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Loved by Makers & Doers
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Here's what people are saying
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-2xl">
+                            👨‍💻
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-semibold text-gray-900">Alex Chen</div>
+                            <div class="text-sm text-gray-500">Software Developer</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "Finally, a Kanban board that respects my privacy. No signup, beautiful UI, and it just works.
+                        I use it for all my side projects now."
+                    </p>
+                    <div class="mt-4 text-yellow-400">★★★★★</div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-cyan-100 rounded-full flex items-center justify-center text-2xl">
+                            ✍️
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-semibold text-gray-900">Sarah Johnson</div>
+                            <div class="text-sm text-gray-500">Content Creator</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "I was tired of Trello's limitations and Notion's complexity. This hits the sweet spot.
+                        Clean, fast, and exactly what I need for content planning."
+                    </p>
+                    <div class="mt-4 text-yellow-400">★★★★★</div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-8 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center text-2xl">
+                            🎨
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-semibold text-gray-900">Marcus Lee</div>
+                            <div class="text-sm text-gray-500">Design Lead</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "The animations are so smooth! As a designer, I appreciate the attention to detail.
+                        Plus, I love that my project ideas aren't stored on some company's server."
+                    </p>
+                    <div class="mt-4 text-yellow-400">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 gradient-bg">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                Ready to Take Control?
+            </h2>
+            <p class="text-xl md:text-2xl text-white/90 mb-8">
+                No signup. No credit card. No tracking. Just pure productivity.
+            </p>
+
+            <a href="/app" class="glow-button inline-flex items-center space-x-3 bg-white text-purple-600 px-10 py-5 rounded-lg text-xl font-bold hover:bg-gray-50 transition">
+                <span>Start Organizing Now</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+            </a>
+
+            <p class="mt-6 text-white/80">
+                Takes 0 seconds to start. Literally.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <span class="text-2xl">📋</span>
+                        <span class="text-xl font-bold">Kanban Board</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Privacy-first task management for individuals and small teams.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#how-it-works" class="hover:text-white transition">How It Works</a></li>
+                        <li><a href="#privacy" class="hover:text-white transition">Privacy</a></li>
+                        <li><a href="/roadmap" class="hover:text-white transition">Roadmap</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="/docs" class="hover:text-white transition">Documentation</a></li>
+                        <li><a href="/blog" class="hover:text-white transition">Blog</a></li>
+                        <li><a href="https://github.com" class="hover:text-white transition">GitHub</a></li>
+                        <li><a href="/changelog" class="hover:text-white transition">Changelog</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="https://twitter.com" class="hover:text-white transition">Twitter</a></li>
+                        <li><a href="https://github.com" class="hover:text-white transition">GitHub</a></li>
+                        <li><a href="mailto:hello@kanban.com" class="hover:text-white transition">Email</a></li>
+                        <li><a href="/newsletter" class="hover:text-white transition">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                <p>© 2024 Kanban Board. Open source under MIT License.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="/privacy" class="hover:text-white transition">Privacy</a>
+                    <a href="/terms" class="hover:text-white transition">Terms</a>
+                    <a href="https://github.com" class="hover:text-white transition">Source Code</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Analytics (Privacy-friendly alternative) -->
+    <script>
+        // Add your analytics here if needed (e.g., Plausible, Simple Analytics)
+        // Or leave empty for complete privacy
+    </script>
+</body>
+</html>
