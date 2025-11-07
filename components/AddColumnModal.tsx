@@ -48,7 +48,7 @@ export default function AddColumnModal({
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, type: 'spring', stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-md overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-primary to-secondary px-6 py-4">
@@ -60,7 +60,7 @@ export default function AddColumnModal({
             <form onSubmit={handleSubmit} className="p-6 space-y-4">
               {/* Title Input */}
               <div>
-                <label htmlFor="columnTitle" className="block text-sm font-semibold text-gray-700 mb-2">
+                <label htmlFor="columnTitle" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Column Title
                 </label>
                 <input
@@ -70,9 +70,9 @@ export default function AddColumnModal({
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="e.g., Review, Testing, Deployment"
                   className="
-                    w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:outline-none
-                    transition-all duration-200 text-gray-900 placeholder-gray-400
-                    focus:ring-4 focus:ring-primary/10
+                    w-full px-4 py-3 rounded-lg border-2 border-gray-200 dark:border-gray-600 focus:border-primary focus:outline-none
+                    transition-all duration-200 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500
+                    focus:ring-4 focus:ring-primary/10 bg-white dark:bg-gray-700
                   "
                   autoFocus
                 />
@@ -84,7 +84,7 @@ export default function AddColumnModal({
                   type="button"
                   onClick={onClose}
                   className="
-                    flex-1 px-4 py-3 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-900
+                    flex-1 px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100
                     font-semibold transition-all duration-200
                   "
                   whileHover={{ scale: 1.02 }}

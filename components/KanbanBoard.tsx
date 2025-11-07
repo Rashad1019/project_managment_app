@@ -21,6 +21,7 @@ import Column from './Column'
 import AddCardModal from './AddCardModal'
 import CardDetailModal from './CardDetailModal'
 import AddColumnModal from './AddColumnModal'
+import ThemeToggle from './ThemeToggle'
 import { BoardState, Card as CardType } from '@/lib/types'
 import {
   loadBoardState,
@@ -134,14 +135,14 @@ export default function KanbanBoard() {
 
   if (!boardState) {
     return (
-      <div className="w-full h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10">
+      <div className="w-full h-screen flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 dark:from-gray-900 dark:to-gray-800">
         <motion.div
           animate={{ scale: [0.8, 1] }}
           transition={{ duration: 0.5 }}
           className="text-center"
         >
           <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto mb-4 animate-pulse"></div>
-          <p className="text-gray-600 font-semibold">Loading your board...</p>
+          <p className="text-gray-600 dark:text-gray-300 font-semibold">Loading your board...</p>
         </motion.div>
       </div>
     )
@@ -151,12 +152,12 @@ export default function KanbanBoard() {
   const columnIds = sortedColumns.map(col => col.id)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-cyan-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden">
       {/* Header */}
       <motion.header
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="sticky top-0 z-40 bg-white/80 backdrop-blur-lg border-b border-gray-200"
+        className="sticky top-0 z-40 bg-white/80 dark:bg-gray-800/80 backdrop-blur-lg border-b border-gray-200 dark:border-gray-700"
       >
         <div className="max-w-full px-6 py-4">
           <div className="flex items-center justify-between">
@@ -164,22 +165,25 @@ export default function KanbanBoard() {
               <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                 Project Board
               </h1>
-              <p className="text-gray-600 text-sm mt-1">
+              <p className="text-gray-600 dark:text-gray-300 text-sm mt-1">
                 Organize your tasks with drag and drop
               </p>
             </div>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => setAddColumnModalOpen(true)}
-              className="
-                px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary
-                text-white font-semibold shadow-lg hover:shadow-xl
-                transition-all duration-200
-              "
-            >
-              + Add Column
-            </motion.button>
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => setAddColumnModalOpen(true)}
+                className="
+                  px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-secondary
+                  text-white font-semibold shadow-lg hover:shadow-xl
+                  transition-all duration-200
+                "
+              >
+                + Add Column
+              </motion.button>
+            </div>
           </div>
         </div>
       </motion.header>

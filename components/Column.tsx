@@ -36,7 +36,7 @@ export default function Column({
   return (
     <motion.div
       layout
-      className="flex-shrink-0 w-full sm:w-96 flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 rounded-xl p-4 border-2 transition-all duration-300"
+      className="flex-shrink-0 w-full sm:w-96 flex flex-col bg-gradient-to-b from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-4 border-2 transition-all duration-300"
       style={{
         borderColor: isDraggingOver ? '#7C3AED' : '#E5E7EB',
       }}
@@ -46,8 +46,8 @@ export default function Column({
       {/* Column Header */}
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
-          <h2 className="text-lg font-bold text-gray-900">{column.title}</h2>
-          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 text-gray-700 text-xs font-semibold">
+          <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">{column.title}</h2>
+          <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs font-semibold">
             {cards.length}
           </span>
         </div>
@@ -103,7 +103,7 @@ export default function Column({
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
-                className="text-center py-8 text-gray-400"
+                className="text-center py-8 text-gray-400 dark:text-gray-500"
               >
                 <p className="text-sm">No cards yet</p>
                 <p className="text-xs mt-1">Drop cards here or add new ones</p>
@@ -118,8 +118,8 @@ export default function Column({
         layout
         onClick={() => onAddCard?.(column.id)}
         className="
-          w-full mt-4 px-4 py-3 rounded-lg bg-white border-2 border-dashed border-gray-300
-          hover:border-primary hover:bg-primary/5 text-gray-700 hover:text-primary
+          w-full mt-4 px-4 py-3 rounded-lg bg-white dark:bg-gray-800 border-2 border-dashed border-gray-300 dark:border-gray-600
+          hover:border-primary hover:bg-primary/5 dark:hover:bg-primary/10 text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary
           font-semibold text-sm transition-all duration-200
           hover:shadow-md active:scale-95
         "
