@@ -30,8 +30,8 @@ export default function Card({
         relative rounded-lg border-2 border-transparent transition-all duration-200
         ${
           isDragging
-            ? 'bg-white shadow-2xl scale-105 border-primary/50'
-            : 'bg-white shadow-md hover:shadow-lg border-gray-200'
+            ? 'bg-white dark:bg-gray-700 shadow-2xl scale-105 border-primary/50'
+            : 'bg-white dark:bg-gray-700 shadow-md hover:shadow-lg border-gray-200 dark:border-gray-600'
         }
         ${isHovered ? 'scale-102 shadow-lg' : ''}
         cursor-grab active:cursor-grabbing
@@ -44,11 +44,11 @@ export default function Card({
     >
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1 cursor-pointer" onClick={onClick}>
-          <h3 className="font-semibold text-gray-900 text-sm leading-snug break-words">
+          <h3 className="font-semibold text-gray-900 dark:text-gray-100 text-sm leading-snug break-words">
             {card.title}
           </h3>
           {card.description && (
-            <p className="text-xs text-gray-600 mt-2 line-clamp-2 break-words">
+            <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 line-clamp-2 break-words">
               {card.description}
             </p>
           )}
@@ -73,8 +73,8 @@ export default function Card({
       </div>
 
       {/* Timestamp indicator */}
-      <div className="mt-3 pt-2 border-t border-gray-100">
-        <p className="text-xs text-gray-400">
+      <div className="mt-3 pt-2 border-t border-gray-100 dark:border-gray-600">
+        <p className="text-xs text-gray-400 dark:text-gray-500">
           Updated {formatTime(card.updatedAt)}
         </p>
       </div>

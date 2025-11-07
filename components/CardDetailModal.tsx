@@ -79,7 +79,7 @@ export default function CardDetailModal({
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, type: 'spring', stiffness: 300 }}
             onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-primary to-secondary px-6 py-4 flex items-center justify-between sticky top-0">
@@ -105,7 +105,7 @@ export default function CardDetailModal({
             <div className="p-6 space-y-6">
               {/* Title */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Title
                 </label>
                 {isEditing ? (
@@ -114,13 +114,13 @@ export default function CardDetailModal({
                     value={title}
                     onChange={(e) => handleTitleChange(e.target.value)}
                     className="
-                      w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:outline-none
-                      transition-all duration-200 text-gray-900 font-semibold
+                      w-full px-4 py-3 rounded-lg border-2 border-gray-200 dark:border-gray-600 focus:border-primary focus:outline-none
+                      transition-all duration-200 text-gray-900 dark:text-gray-100 font-semibold bg-white dark:bg-gray-700
                       focus:ring-4 focus:ring-primary/10
                     "
                   />
                 ) : (
-                  <p className="px-4 py-3 bg-gray-50 rounded-lg text-gray-900 font-semibold">
+                  <p className="px-4 py-3 bg-gray-50 dark:bg-gray-700 rounded-lg text-gray-900 dark:text-gray-100 font-semibold">
                     {title}
                   </p>
                 )}
@@ -128,7 +128,7 @@ export default function CardDetailModal({
 
               {/* Description */}
               <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
+                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Notes
                 </label>
                 {isEditing ? (
@@ -137,29 +137,29 @@ export default function CardDetailModal({
                     onChange={(e) => handleDescriptionChange(e.target.value)}
                     rows={6}
                     className="
-                      w-full px-4 py-3 rounded-lg border-2 border-gray-200 focus:border-primary focus:outline-none
-                      transition-all duration-200 text-gray-900 resize-none
+                      w-full px-4 py-3 rounded-lg border-2 border-gray-200 dark:border-gray-600 focus:border-primary focus:outline-none
+                      transition-all duration-200 text-gray-900 dark:text-gray-100 resize-none bg-white dark:bg-gray-700
                       focus:ring-4 focus:ring-primary/10
                     "
                   />
                 ) : (
-                  <div className="px-4 py-3 bg-gray-50 rounded-lg min-h-24">
+                  <div className="px-4 py-3 bg-gray-50 dark:bg-gray-700 rounded-lg min-h-24">
                     {description ? (
-                      <p className="text-gray-700 whitespace-pre-wrap break-words">
+                      <p className="text-gray-700 dark:text-gray-300 whitespace-pre-wrap break-words">
                         {description}
                       </p>
                     ) : (
-                      <p className="text-gray-400 italic">No notes added yet</p>
+                      <p className="text-gray-400 dark:text-gray-500 italic">No notes added yet</p>
                     )}
                   </div>
                 )}
               </div>
 
               {/* Metadata */}
-              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200">
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <div>
-                  <p className="text-xs font-semibold text-gray-500 uppercase">Created</p>
-                  <p className="text-sm text-gray-900 mt-1">
+                  <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Created</p>
+                  <p className="text-sm text-gray-900 dark:text-gray-100 mt-1">
                     {new Date(card.createdAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'short',
@@ -170,8 +170,8 @@ export default function CardDetailModal({
                   </p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold text-gray-500 uppercase">Updated</p>
-                  <p className="text-sm text-gray-900 mt-1">
+                  <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">Updated</p>
+                  <p className="text-sm text-gray-900 dark:text-gray-100 mt-1">
                     {new Date(card.updatedAt).toLocaleDateString('en-US', {
                       year: 'numeric',
                       month: 'short',
@@ -184,7 +184,7 @@ export default function CardDetailModal({
               </div>
 
               {/* Actions */}
-              <div className="flex gap-3 pt-4 border-t border-gray-200">
+              <div className="flex gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
                 {isEditing ? (
                   <>
                     <motion.button
@@ -196,7 +196,7 @@ export default function CardDetailModal({
                         setHasChanges(false)
                       }}
                       className="
-                        flex-1 px-4 py-3 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-900
+                        flex-1 px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100
                         font-semibold transition-all duration-200
                       "
                       whileHover={{ scale: 1.02 }}
@@ -225,7 +225,7 @@ export default function CardDetailModal({
                       type="button"
                       onClick={() => setIsEditing(true)}
                       className="
-                        flex-1 px-4 py-3 rounded-lg bg-primary/10 hover:bg-primary/20 text-primary
+                        flex-1 px-4 py-3 rounded-lg bg-primary/10 dark:bg-primary/20 hover:bg-primary/20 dark:hover:bg-primary/30 text-primary
                         font-semibold transition-all duration-200
                       "
                       whileHover={{ scale: 1.02 }}
@@ -242,7 +242,7 @@ export default function CardDetailModal({
                         }
                       }}
                       className="
-                        flex-1 px-4 py-3 rounded-lg bg-destructive/10 hover:bg-destructive/20 text-destructive
+                        flex-1 px-4 py-3 rounded-lg bg-destructive/10 dark:bg-destructive/20 hover:bg-destructive/20 dark:hover:bg-destructive/30 text-destructive
                         font-semibold transition-all duration-200
                       "
                       whileHover={{ scale: 1.02 }}
@@ -254,7 +254,7 @@ export default function CardDetailModal({
                       type="button"
                       onClick={onClose}
                       className="
-                        flex-1 px-4 py-3 rounded-lg bg-gray-100 hover:bg-gray-200 text-gray-900
+                        flex-1 px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-900 dark:text-gray-100
                         font-semibold transition-all duration-200
                       "
                       whileHover={{ scale: 1.02 }}
